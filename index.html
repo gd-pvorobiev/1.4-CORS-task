@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.2/handlebars.min.js"></script>
+        
+        <script src="js/DataManager.js"></script>
+        <script src="js/LayoutManager.js"></script>
+        <script src="js/init.js"></script>
+    </head>
+    <body>
+        <script id="userInfoModalTemplate" type="text/x-handlebars-template">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">{{name}}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <b>Email:</b> {{email}}
+                            <hr/>
+                            <b>Username:</b> {{username}}
+                            <hr/>
+                            <b>Website:</b> {{website}}
+                            <hr/>
+                            <b>Company:</b> {{company.name}}
+                            <hr/>
+                            <b>Phone:</b> {{phone}}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script id="userCardCardsLayout" type="text/x-handlebars-template">
+            <div class="col-md-3 col-sm-4 item" id="item-{{id}}">
+                <div class="row" class="info">
+                    <div class="col-sm-12">
+                        <h3>{{name}}</h3>
+                        {{phone}}
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>
+                        {{email}}
+                        </h4>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button>More info</button>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+        </script>
+        
+        <script id="userCardRowsLayout" type="text/x-handlebars-template">
+            <div class="row item" id="item-{{id}}">
+                <div class="col-sm-7">
+                    <h3>{{name}}</h3>
+                    {{phone}}
+                </div>
+                
+                <div class="col-sm-4">
+                    <h4>{{email}}</h4>
+                </div>
+                <div class="col-sm-1">
+                    <button>More info</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <hr/>
+                </div>
+            </div>
+        </script>
+        
+        <nav class="navbar navbar-default">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input onkeyup="setSearchCriteria(this.value);" type="text" class="form-control" placeholder="Search">
+                </div>
+            </form>
+        </nav>
+        
+        <div class="row">
+            <div class="col-md-2 visible-md-block visible-lg-block hidden">
+                <div class="container-fluid">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            Show as...
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#" onclick="setCardsLayout();">Cards</a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="setRowsLayout();">Rows</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-12" id="cardsLayout">
+                <div class="row contentWrapper">
+                    
+                </div>
+            </div>
+            
+            <div class="col-md-9 col-sm-12 contentWrapper" id="rowsLayout">
+                
+            </div>
+        </div>
+    </body>
+</html>

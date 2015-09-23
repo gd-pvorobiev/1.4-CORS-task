@@ -1,0 +1,24 @@
+
+body {
+    padding: 10px 100px;
+}
+
+.item {
+/*    border: 1px solid grey;*/
+}
+
+/****** CARDS *******/
+
+#cardsLayout .item {
+    height: 400px;
+}
+
+#cardsLayout .item div {
+    margin: 5px 10px;
+}
+
+/****** ROWS *******/
+
+#rowsLayout .item {
+    padding: 10px 0px;
+}
