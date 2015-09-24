@@ -4,14 +4,17 @@ function LayoutManager() {
     this.lastRenderedLayout = "";
     this.lastRenderedData = [];
     this.lastRenderTarget = "";
-    this.filterString = "";
 }
 
-LayoutManager.prototype.setFilterString = function(str) {
-    this.filterString = str;
-    this.reRender();
-    this.applyLayout(this.lastRenderTarget);
-}
+LayoutManager.prototype.showSpinner = function() {
+    $(".spinner").show();
+};
+
+
+LayoutManager.prototype.hideSpinner = function() {
+    $(".spinner").hide();
+};
+
 
 LayoutManager.prototype.addLayout = function(name, templateId) {
     this.layouts[name] = $("#" + templateId).html();
@@ -22,25 +25,23 @@ LayoutManager.prototype.reRender = function() {
 }
 
 LayoutManager.prototype.renderLayout = function(name, data) {
-    this.lastRenderedLayout = name;
+    this.lastRenderedLayout = name || this.lastRenderedLayout;
     this.lastRenderedData = data;
-    var tpl = Handlebars.compile(this.layouts[name]);
+    var tpl = Handlebars.compile(this.layouts[this.lastRenderedLayout]);
     this.lastRenderedContent = "";
     
     var i = 0;
     for (i; i<data.length; i++) {
-        if ((this.filterString && data[i].filter(this.filterString)) || !this.filterString) {
-            this.lastRenderedContent += tpl(data[i]);
-        }
+        this.lastRenderedContent += tpl(data[i]);
     }
     
     return this.lastRenderedContent;
 };
 
 LayoutManager.prototype.applyLayout = function(targetSelector) {
-    this.lastRenderTarget = targetSelector;
+    this.lastRenderTarget = targetSelector || this.lastRenderTarget;
     
-    var container = $(targetSelector);
+    var container = $(this.lastRenderTarget);
     
     container.empty();
     container.html(this.lastRenderedContent);

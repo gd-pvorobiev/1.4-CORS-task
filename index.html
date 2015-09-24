@@ -2,13 +2,17 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="http://css-spinners.com/css/spinner/three-quarters.css" type="text/css">
+        
         <link rel="stylesheet" href="css/styles.css"/>
         
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.2/handlebars.min.js"></script>
         
-        <script src="js/DataManager.js"></script>
+        <script src="js/User.js"></script>
+        <script src="js/UserFactory.js"></script>
+        <script src="js/UserManager.js"></script>
         <script src="js/LayoutManager.js"></script>
         <script src="js/init.js"></script>
     </head>
@@ -120,12 +124,16 @@
             </div>
             <div class="col-md-9 col-sm-12" id="cardsLayout">
                 <div class="row contentWrapper">
-                    
                 </div>
             </div>
             
             <div class="col-md-9 col-sm-12 contentWrapper" id="rowsLayout">
-                
+            </div>
+        </div>
+        
+        <div class="spinner">
+            <div class="three-quarters-loader">
+                Loading…
             </div>
         </div>
     </body>
