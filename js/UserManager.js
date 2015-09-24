@@ -5,7 +5,7 @@ function UserManager() {
 }
 
 UserManager.prototype.getById = function(id) {
-    return this.lastDataReceived[id];
+    return this.lastDataReceivedHash[id];
 };
 
 UserManager.prototype.search = function(str) {
